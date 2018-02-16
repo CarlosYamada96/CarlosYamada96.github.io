@@ -1,0 +1,22 @@
+#container{
+    float: left;
+}
+#textpiano{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+#textseq{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+#start{
+    float: left;
+}
+
+#pause{
+    float: left;
+    margin-top: -19px;
+    margin-left: 200px;
+}

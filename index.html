@@ -1,231 +1,248 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="p5/p5.js"></script>
-    <script src="p5/addons/p5.dom.js"></script>
     <script src="p5/addons/p5.sound.js"></script>
-    <script src="NexusUI.js"></script>
-    <script src="script.js"></script>
-    <title>Document</title>
+    <script src="p5/addons/p5.dom.js"></script>
+    <script src="dist/NexusUI.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="js/script.js"></script>
 </head>
 
 <body>
-    <div id="piano"></div>
-    <script>
-        var piano = new Nexus.Piano("piano");
-        piano.on('change', function (v) {
-            if (v.state == true) {
-                switch (v.note) {
-                    case 24:
-                        console.log("prueba");
-                        osc.freq(130.813);
-                        osc.start();
-                        break;
-                    case 25:
-                        osc.freq(138.591);
-                        osc.start();
-                        break;
-                    case 26:
-                        osc.freq(146.832);
-                        osc.start();;
-                        break;
-                    case 27:
-                        osc.freq(155.563);
-                        osc.start();
-                        break;
-                    case 28:
-                        osc.freq(164.814);
-                        osc.start();
-                        break;
-                    case 29:
-                        osc.freq(174.614);
-                        osc.start();
-                        break;
-                    case 30:
-                        osc.freq(184.997);
-                        osc.start();
-                        break;
-                    case 31:
-                        osc.freq(195.998);
-                        osc.start();
-                        break;
-                    case 32:
-                        osc.freq(207.652);
-                        osc.start();
-                        break;
-                    case 33:
-                        osc.freq(220.000);
-                        osc.start();
-                        break;
-                    case 34:
-                        osc.freq(233.082);
-                        osc.start();
-                        break;
-                    case 35:
-                        osc.freq(246.942);
-                        osc.start();
-                        break;
-                    case 36:
-                        osc.freq(261.626);
-                        osc.start();
-                        break;
-                    case 37:
-                        osc.freq(277.183);
-                        osc.start();
-                        break;
-                    case 38:
-                        osc.freq(293.665);
-                        osc.start();
-                        break;
-                    case 39:
-                        osc.freq(311.127);
-                        osc.start();
-                        break;
-                    case 40:
-                        osc.freq(329.628);
-                        osc.start();
-                        break;
-                    case 41:
-                        osc.freq(349.228);
-                        osc.start();
-                        break;
-                    case 42:
-                        osc.freq(369.994);
-                        osc.start();
-                        break;
-                    case 43:
-                        osc.freq(391.995);
-                        osc.start();
-                        break;
-                    case 44:
-                        osc.freq(415.305);
-                        osc.start();
-                        break;
-                    case 45:
-                        osc.freq(440.000);
-                        osc.start();
-                        break;
-                    case 46:
-                        osc.freq(466.164);
-                        osc.start();
-                        break;
-                    case 47:
-                        osc.freq(493.883);
-                        osc.start();
-                        break;
-                    case 48:
-                        osc.freq(523.251);
-                        osc.start();
-                        break;
-                    case 49:
-                        osc.freq(554.365);
-                        osc.start();
-                        break;
-                    case 50:
-                        osc.freq(587.330);
-                        osc.start();
-                        break;
-                    case 51:
-                        osc.freq(622.254);
-                        osc.start();
-                        break;
-                    case 52:
-                        osc.freq(659.255);
-                        osc.start();
-                        break;
-                    case 53:
-                        osc.freq(698.456);
-                        osc.start();
-                        break;
-                    case 54:
-                        osc.freq(739.989);
-                        osc.start();
-                        break;
-                    case 55:
-                        osc.freq(783.991);
-                        osc.start();
-                        break;
-                    case 56:
-                        osc.freq(830.609);
-                        osc.start();
-                        break;
-                    case 57:
-                        osc.freq(880.000);
-                        osc.start();
-                        break;
-                    case 58:
-                        osc.freq(932.328);
-                        osc.start();
-                        break;
-                    case 59:
-                        osc.freq(987.767);
-                        osc.start();
-                        break;
-                    case 60:
-                        osc.freq(1046.50);
-                        osc.start();
-                        break;
-                }
-            }
-            if (v.state == false) {
-                osc.stop();
-            }
-        })
-    </script>
+    <div id="container">
+    <div id = "textpiano">PIANO KEYBOARD</div>
     <br>
-    <div id="sequencer"></div>
-    <script>
-        var sequencer = new Nexus.Sequencer('sequencer', {
-            'size': [500, 125],
-            'mode': 'toggle',
-            'rows': 3,
-            'columns': 8
-        })
-
-        sequencer.on('step', function (v) {
-            playsounds(v);
-        })
-    </script>
+    <div id="piano"></div>
+    <br>
+    <div id="textseq">SEQUENCER</div>
+    <br>
+    <div id="seq"></div>
     <br>
     <div id="start"></div>
-    <script>
-        var counter = 1;
-        var start = new Nexus.TextButton('start', {
-            'size': [150, 50],
-            'state': false,
-            'text': 'Start',
-            'alternate': false
-        })
-        start.on('change', function (v) {
-            console.log(v);
-            if (counter == 1) {
-                sequencer.start();
-            }
-            counter = counter + 1;
-        })
-
-    </script>
     <br>
-    <div id="stop"></div>
-    <script>
-        var counter = 0;
-        var stop = new Nexus.TextButton('stop', {
-            'size': [150, 50],
-            'state': false,
-            'text': 'Stop',
-            'alternate': false
-        })
-        stop.on('change', function (v) {
-            console.log(v);
-            if (counter == 0) {
-                sequencer.stop();
-            }
-            counter = counter * 0;
-        })
-
-    </script>
+    <div id="pause"></div>
+</div>
 </body>
+
+<!--Script Piano-->
+<script>
+    var piano = new Nexus.Piano("piano");
+    piano.on('change', function (v) {
+        if (v.state == true) {
+            switch (v.note) {
+                case 24:
+                    osc.freq(130.813);
+                    osc.start();
+                    break;
+                case 25:
+                    osc.freq(138.591);
+                    osc.start();
+                    break;
+                case 26:
+                    osc.freq(146.832);
+                    osc.start();;
+                    break;
+                case 27:
+                    osc.freq(155.563);
+                    osc.start();
+                    break;
+                case 28:
+                    osc.freq(164.814);
+                    osc.start();
+                    break;
+                case 29:
+                    osc.freq(174.614);
+                    osc.start();
+                    break;
+                case 30:
+                    osc.freq(184.997);
+                    osc.start();
+                    break;
+                case 31:
+                    osc.freq(195.998);
+                    osc.start();
+                    break;
+                case 32:
+                    osc.freq(207.652);
+                    osc.start();
+                    break;
+                case 33:
+                    osc.freq(220.000);
+                    osc.start();
+                    break;
+                case 34:
+                    osc.freq(233.082);
+                    osc.start();
+                    break;
+                case 35:
+                    osc.freq(246.942);
+                    osc.start();
+                    break;
+                case 36:
+                    osc.freq(261.626);
+                    osc.start();
+                    break;
+                case 37:
+                    osc.freq(277.183);
+                    osc.start();
+                    break;
+                case 38:
+                    osc.freq(293.665);
+                    osc.start();
+                    break;
+                case 39:
+                    osc.freq(311.127);
+                    osc.start();
+                    break;
+                case 40:
+                    osc.freq(329.628);
+                    osc.start();
+                    break;
+                case 41:
+                    osc.freq(349.228);
+                    osc.start();
+                    break;
+                case 42:
+                    osc.freq(369.994);
+                    osc.start();
+                    break;
+                case 43:
+                    osc.freq(391.995);
+                    osc.start();
+                    break;
+                case 44:
+                    osc.freq(415.305);
+                    osc.start();
+                    break;
+                case 45:
+                    osc.freq(440.000);
+                    osc.start();
+                    break;
+                case 46:
+                    osc.freq(466.164);
+                    osc.start();
+                    break;
+                case 47:
+                    osc.freq(493.883);
+                    osc.start();
+                    break;
+                case 48:
+                    osc.freq(523.251);
+                    osc.start();
+                    break;
+                case 49:
+                    osc.freq(554.365);
+                    osc.start();
+                    break;
+                case 50:
+                    osc.freq(587.330);
+                    osc.start();
+                    break;
+                case 51:
+                    osc.freq(622.254);
+                    osc.start();
+                    break;
+                case 52:
+                    osc.freq(659.255);
+                    osc.start();
+                    break;
+                case 53:
+                    osc.freq(698.456);
+                    osc.start();
+                    break;
+                case 54:
+                    osc.freq(739.989);
+                    osc.start();
+                    break;
+                case 55:
+                    osc.freq(783.991);
+                    osc.start();
+                    break;
+                case 56:
+                    osc.freq(830.609);
+                    osc.start();
+                    break;
+                case 57:
+                    osc.freq(880.000);
+                    osc.start();
+                    break;
+                case 58:
+                    osc.freq(932.328);
+                    osc.start();
+                    break;
+                case 59:
+                    osc.freq(987.767);
+                    osc.start();
+                    break;
+                case 60:
+                    osc.freq(1046.50);
+                    osc.start();
+                    break;
+            }
+        }
+        if (v.state == false) {
+            osc.stop();
+        }
+    })
+</script>
+
+<!--Script Sequencer-->
+<script>
+    var sequencer = new Nexus.Sequencer('#seq', {
+        'size': [500, 200],
+        'mode': 'toggle',
+        'rows': 3,
+        'columns': 12
+    })
+
+    sequencer.on('step', function (v) {
+        playStep(v)
+    })
+</script>
+
+<!--Script Start-->
+<script>
+
+    var textbutton = new Nexus.TextButton('#start', {
+        'size': [150, 50],
+        'state': false,
+        'text': 'Start',
+        'alternate': false
+    })
+
+    var counter = 1;
+    textbutton.on('change', function (v) {
+        if (counter == 1) {
+            sequencer.start();
+        }
+        counter = 1;
+    })
+</script>
+
+<!--Script Stop-->
+<script>
+    var textbutton = new Nexus.TextButton('#pause', {
+        'size': [150, 50],
+        'state': false,
+        'text': 'Pause',
+        'alternate': false
+    })
+
+    var counter = 0;
+    textbutton.on('change', function (v) {
+        if (counter == 0) {
+            sequencer.stop();
+        }
+        counter = 0;
+    })
+
+</script>
 
 </html>
